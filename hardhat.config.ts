@@ -33,6 +33,11 @@ const config: HardhatUserConfig = {
       default: 1,
     },
   },
+  verify: {
+    etherscan: {
+      apiKey: process.env.ETHERSCAN_API_KEY ?? '',
+    }
+  },
   gasReporter: {
     enabled: process.env.REPORT_GAS === 'true',
   },
