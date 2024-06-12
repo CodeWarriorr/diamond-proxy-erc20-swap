@@ -1,6 +1,11 @@
 # Uniswap Eth to Token Swap
 
-## Values 
+## Deployment 
+
+- Contract address: 0xb33548A6F866eC8365e9B2272f1b5C55cac849Df
+- Diamond Explorer (louper.dev): https://louper.dev/diamond/0xb33548A6F866eC8365e9B2272f1b5C55cac849Df?network=sepolia
+
+## Dependencies 
 WETH and UniversalRouter addresses: https://github.com/Uniswap/universal-router/commit/e11132c8f1eabe5bdfc31f631881959a6ff8c06a
 
 ## Usage 
