@@ -3,15 +3,23 @@ import { DeployFunction } from 'hardhat-deploy/types';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts } = hre;
-  const { deploy } = deployments;
+  const { diamond } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const deployment = await deploy('Swapper', {
+  const deployment = await diamond.deploy('SwapperDiamond', {
     from: deployer,
-    args: [],
+    autoMine: true,
+    log: true,
+    waitConfirmations: 1,
+    facets: ['SwapperFacet', 'AdminFacet'],
+    execute: {
+      contract: 'InitFacet',
+      methodName: 'init',
+      args: [],
+    },
   });
 
-  console.log('Swapper address', deployment.address);
+  console.log('Swapper diamond address', deployment.address);
 };
 
 export default func;
