@@ -8,7 +8,16 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: '0.8.24',
+  solidity: {
+    version: '0.8.26',
+    settings: {
+      viaIR: true, // Gas optimization, yul optimizer
+      optimizer: {
+        enabled: true, // Gas optimization
+        runs: 200,
+      },
+    },
+  },
   defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
@@ -36,10 +45,11 @@ const config: HardhatUserConfig = {
   verify: {
     etherscan: {
       apiKey: process.env.ETHERSCAN_API_KEY ?? '',
-    }
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS === 'true',
+    trackGasDeltas: true,
   },
 };
 
