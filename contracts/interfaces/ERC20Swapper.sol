@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.24;
+pragma solidity =0.8.26;
 
 interface ERC20Swapper {
     /// @dev swaps the `msg.value` Ether to at least `minAmount` of tokens in `address`, or reverts
