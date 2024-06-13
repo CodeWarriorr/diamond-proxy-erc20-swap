@@ -6,14 +6,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  await deploy('MyERC20', {
+  await deploy('Feeder', {
     from: deployer,
     args: [],
   });
 };
 
 export default func;
-func.tags = ['me2', 'all'];
+func.tags = ['feed', 'all'];
 func.dependencies = [];
 func.skip = async ({ network }) => {
   return network.name !== 'localhost' && network.name !== 'hardhat';

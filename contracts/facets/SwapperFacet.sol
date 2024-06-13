@@ -67,4 +67,11 @@ contract SwapperFacet is WithStorage, WithModifiers, CommonErrors, ReentrancyGua
 
         return swappedAmount;
     }
+
+    /**
+     * @notice Function allows owner to withdraw ETH from the contract in unexpected event like force feeding.
+     */
+    function rescue() external isOwner {
+        payable(msg.sender).transfer(address(this).balance);
+    }
 }

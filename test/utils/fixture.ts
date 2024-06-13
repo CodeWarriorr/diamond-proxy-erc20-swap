@@ -1,5 +1,10 @@
 import { deployments } from 'hardhat';
-import { AdminFacet, MyERC20, SwapperFacet } from '../../typechain-types';
+import {
+  AdminFacet,
+  MyERC20,
+  SwapperFacet,
+  Feeder,
+} from '../../typechain-types';
 
 export const setupFixture = deployments.createFixture(
   async ({ deployments, getNamedAccounts, ethers }, options) => {
@@ -24,12 +29,14 @@ export const setupFixture = deployments.createFixture(
     )) as AdminFacet;
 
     const myERC20 = (await ethers.getContract('MyERC20')) as MyERC20;
+    const feeder = (await ethers.getContract('Feeder')) as Feeder;
 
     return {
       deployer,
       swapperFacet,
       adminFacet,
       myERC20,
+      feeder,
     };
   }
 );

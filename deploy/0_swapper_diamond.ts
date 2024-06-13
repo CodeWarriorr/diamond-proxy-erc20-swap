@@ -6,7 +6,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { diamond } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const deployment = await diamond.deploy('SwapperDiamond', {
+  await diamond.deploy('SwapperDiamond', {
     from: deployer,
     autoMine: true,
     log: true,
@@ -18,8 +18,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       args: [],
     },
   });
-
-  console.log('Swapper diamond address', deployment.address);
 };
 
 export default func;
